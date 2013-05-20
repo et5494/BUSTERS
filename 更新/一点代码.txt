@@ -1,0 +1,4 @@
+ If Not Version() Then
+            Process.Start("¸üÐÂ.exe")
+            Me.Close()
+        End If

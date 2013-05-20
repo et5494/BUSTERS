@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "资源更新", "资源更新\资源更新.vdproj", "{657A8326-94D4-42F3-8B78-32F9E50E0564}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{657A8326-94D4-42F3-8B78-32F9E50E0564}.Debug|Default.ActiveCfg = Release
+		{657A8326-94D4-42F3-8B78-32F9E50E0564}.Debug|Default.Build.0 = Release
+		{657A8326-94D4-42F3-8B78-32F9E50E0564}.Release|Default.ActiveCfg = Release
+		{657A8326-94D4-42F3-8B78-32F9E50E0564}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
