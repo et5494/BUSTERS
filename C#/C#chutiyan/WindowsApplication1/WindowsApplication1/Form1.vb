@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Public Class Form1
-
+    Dim mv As String
     Dim AllFile() As String
     Dim AllNum As Integer = 0
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -17,6 +17,7 @@ Public Class Form1
             Exit Sub
         End If
         AllFile = Directory.GetFiles(TextBox1.Text, "*.*", SearchOption.AllDirectories)
+        mv = TextBox1.Text
         Label3.Text = AllFile.Length
         Button2.Enabled = False
         Button3.Enabled = True
@@ -24,7 +25,7 @@ Public Class Form1
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         If Button3.Text = "开始监控" Then
-            AllFile = Directory.GetFiles(TextBox1.Text, "*.*", SearchOption.AllDirectories)
+            AllFile = Directory.GetFiles(mv, "*.*", SearchOption.AllDirectories)
             Timer1.Start()
             Button3.Text = "停止监控"
         ElseIf Button3.Text = "停止监控" Then
@@ -34,7 +35,7 @@ Public Class Form1
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-        Dim file() As String = Directory.GetFiles(TextBox1.Text, "*.*", SearchOption.AllDirectories)
+        Dim file() As String = Directory.GetFiles(mv, "*.*", SearchOption.AllDirectories)
         Label4.Text = file.Length
         For i = 0 To file.Length - 1
             If Array.IndexOf(AllFile, file(i)) = -1 Then
@@ -42,7 +43,7 @@ Public Class Form1
                 GaiName(file(i))
             End If
         Next
-        AllFile = Directory.GetFiles(TextBox1.Text, "*.*", SearchOption.AllDirectories)
+        AllFile = Directory.GetFiles(mv, "*.*", SearchOption.AllDirectories)
         Label3.Text = AllFile.Length
     End Sub
 
