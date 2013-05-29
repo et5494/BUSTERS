@@ -41,7 +41,17 @@ Partial Class Form1
         Me.删除本条ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.刷新数据ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.更换数据库ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.皮肤ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.自定义ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
@@ -132,8 +142,8 @@ Partial Class Form1
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.Transparent
-        Me.MenuStrip1.BackgroundImage = Global.CB.My.Resources.Resources.f95cbc45622848b2cefca3ca
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.文件ToolStripMenuItem})
+        Me.MenuStrip1.BackgroundImage = Global.CB.My.Resources.Resources._4
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.文件ToolStripMenuItem, Me.皮肤ToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(559, 25)
@@ -142,7 +152,7 @@ Partial Class Form1
         '
         '文件ToolStripMenuItem
         '
-        Me.文件ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.文件ToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
         Me.文件ToolStripMenuItem.Checked = True
         Me.文件ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.文件ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.连接ToolStripMenuItem, Me.初始化ToolStripMenuItem, Me.查看更新历史ToolStripMenuItem, Me.更新所有项目ToolStripMenuItem, Me.删除本条ToolStripMenuItem, Me.刷新数据ToolStripMenuItem, Me.更换数据库ToolStripMenuItem})
@@ -206,10 +216,68 @@ Partial Class Form1
         Me.更换数据库ToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.更换数据库ToolStripMenuItem.Text = "更换数据库"
         '
+        '皮肤ToolStripMenuItem
+        '
+        Me.皮肤ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.ToolStripMenuItem5, Me.ToolStripMenuItem6, Me.ToolStripMenuItem7, Me.ToolStripMenuItem8, Me.自定义ToolStripMenuItem})
+        Me.皮肤ToolStripMenuItem.Name = "皮肤ToolStripMenuItem"
+        Me.皮肤ToolStripMenuItem.Size = New System.Drawing.Size(44, 21)
+        Me.皮肤ToolStripMenuItem.Text = "皮肤"
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem2.Text = "1"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem3.Text = "2"
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem4.Text = "3"
+        '
+        'ToolStripMenuItem5
+        '
+        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem5.Text = "4"
+        '
+        'ToolStripMenuItem6
+        '
+        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem6.Text = "5"
+        '
+        'ToolStripMenuItem7
+        '
+        Me.ToolStripMenuItem7.Enabled = False
+        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem7.Text = "6"
+        '
+        'ToolStripMenuItem8
+        '
+        Me.ToolStripMenuItem8.Enabled = False
+        Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem8.Text = "7"
+        '
+        '自定义ToolStripMenuItem
+        '
+        Me.自定义ToolStripMenuItem.Name = "自定义ToolStripMenuItem"
+        Me.自定义ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.自定义ToolStripMenuItem.Text = "自定义"
+        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Panel1.BackgroundImage = Global.CB.My.Resources.Resources.f95cbc45622848b2cefca3ca
+        Me.Panel1.BackgroundImage = Global.CB.My.Resources.Resources._4
+        Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.CheckBox1)
@@ -230,8 +298,17 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.DataGridView1)
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(559, 556)
+        Me.Panel1.Size = New System.Drawing.Size(559, 564)
         Me.Panel1.TabIndex = 28
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(457, 552)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(95, 12)
+        Me.Label8.TabIndex = 27
+        Me.Label8.Text = "by lonelyなwind"
         '
         'Button1
         '
@@ -327,7 +404,7 @@ Partial Class Form1
         '
         Me.Label9.AutoSize = True
         Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Location = New System.Drawing.Point(12, 171)
+        Me.Label9.Location = New System.Drawing.Point(12, 166)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(35, 12)
         Me.Label9.TabIndex = 26
@@ -411,7 +488,7 @@ Partial Class Form1
         Me.DataGridView1.Location = New System.Drawing.Point(12, 186)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 23
-        Me.DataGridView1.Size = New System.Drawing.Size(540, 357)
+        Me.DataGridView1.Size = New System.Drawing.Size(540, 366)
         Me.DataGridView1.TabIndex = 16
         '
         'Form1
@@ -421,8 +498,8 @@ Partial Class Form1
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(559, 564)
-        Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.TextBox7)
@@ -483,5 +560,15 @@ Partial Class Form1
     Friend WithEvents 删除本条ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents 刷新数据ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents 更换数据库ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents 皮肤ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem5 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem6 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem7 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem8 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents 自定义ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

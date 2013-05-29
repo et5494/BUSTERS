@@ -80,11 +80,12 @@ Public Class Form5
             If IO.Directory.Exists(TextBox2.Text & "\" & MuBiao_d) = False Then
                 If TextBox3.Text = "直接点击提交！" Or TextBox3.Text = "" Then
                     MsgBox("错误，文件" & Fname & "不存在，请单独上传！")
-                    Button3.Enabled = True
-                    Label3.Visible = False
-                    Label4.Visible = False
-                    ProgressBar1.Value = 0
-                    Exit Sub
+                    Continue For
+                    'Button3.Enabled = True
+                    'Label3.Visible = False
+                    'Label4.Visible = False
+                    'ProgressBar1.Value = 0
+                    'Exit Sub
                 End If
                 MuBiao_d = TextBox3.Text
                 If IO.Directory.Exists(TextBox2.Text & "\" & MuBiao_d) = False Then
@@ -124,10 +125,13 @@ Public Class Form5
         Next
         Dim msg As String = "以成功上传文件个数:" & num & vbNewLine
         msg += names
+        Dim addones As String = "log.txt"
+        System.IO.File.WriteAllText(addones, msg)
         MsgBox(msg)
         Form1.TextBox1.Text = TextBox1.Text
         Me.DialogResult = DialogResult.OK
         Me.Close()
+
     End Sub
 
     Private Sub Form5_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

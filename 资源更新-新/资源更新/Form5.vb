@@ -34,9 +34,9 @@ Public Class Form5
             If b.Length = 0 Then
                 b = Directory.GetFiles("\\172.16.32.100\data", Fname, SearchOption.AllDirectories)
             End If
+            Dim str As String = ""
             If b.Length <> 0 Then
                 bbb = b(0).Split("\")
-                Dim str As String = ""
                 For z = 3 To bbb.Length - 2
                     If z = bbb.Length - 2 Then
                         str += bbb(z)
@@ -45,6 +45,10 @@ Public Class Form5
                     End If
                 Next
                 TextBox3.Text = str
+            Else
+                str = "未在\\172.16.32.100\中找到文件，请手动输入地址"
+                TextBox3.Text = ""
+                MsgBox(str)
             End If
         Next
     End Sub
@@ -66,17 +70,30 @@ Public Class Form5
             Fname = Mid(a(xx), InStrRev(a(xx), "\") + 1)
             If IO.File.Exists(name) = False Then
                 MsgBox("错误，源文件不存在")
+                Button3.Enabled = True
+                Label3.Visible = False
+                Label4.Visible = False
+                ProgressBar1.Value = 0
                 Exit Sub
             End If
             Dim MuBiao_d As String = DedaoMUbiao(Fname)
             If IO.Directory.Exists(TextBox2.Text & "\" & MuBiao_d) = False Then
                 If TextBox3.Text = "直接点击提交！" Or TextBox3.Text = "" Then
                     MsgBox("错误，文件" & Fname & "不存在，请单独上传！")
-                    Exit Sub
+                    Continue For
+                    'Button3.Enabled = True
+                    'Label3.Visible = False
+                    'Label4.Visible = False
+                    'ProgressBar1.Value = 0
+                    'Exit Sub
                 End If
                 MuBiao_d = TextBox3.Text
                 If IO.Directory.Exists(TextBox2.Text & "\" & MuBiao_d) = False Then
                     MsgBox("错误，目标不存在")
+                    Button3.Enabled = True
+                    Label3.Visible = False
+                    Label4.Visible = False
+                    ProgressBar1.Value = 0
                     Exit Sub
                 End If
             End If
@@ -108,10 +125,13 @@ Public Class Form5
         Next
         Dim msg As String = "以成功上传文件个数:" & num & vbNewLine
         msg += names
+        Dim addones As String = "log.txt"
+        System.IO.File.AppendAllText(addones, msg)
         MsgBox(msg)
         Form1.TextBox1.Text = TextBox1.Text
         Me.DialogResult = DialogResult.OK
         Me.Close()
+
     End Sub
 
     Private Sub Form5_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

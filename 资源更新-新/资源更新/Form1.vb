@@ -1,6 +1,6 @@
 ﻿Imports System.Data
 'Imports System.Data.SqlClient
-Imports System.Net.Mime.MediaTypeNames
+'Imports System.Net.Mime.MediaTypeNames
 Imports System.IO
 Imports System.Xml
 Imports System.Text.RegularExpressions
@@ -8,11 +8,15 @@ Imports System.Text
 Imports MySql.Data.MySqlClient
 Imports System.Reflection
 Imports System.Security.Cryptography
+Imports System.Drawing
 
 Public Class Form1
     Dim mycon
     Dim QuanJu As String
     Private rname, miaos As Form2
+    Dim SkinList As Array = {CB.My.Resources._4, CB.My.Resources.f95cbc45622848b2cefca3ca,
+                             CB.My.Resources._4383834_203327048453_2, CB.My.Resources._20130528182727,
+                             CB.My.Resources._1231}
     '连接
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         'MsgBox(CheckBox1.CheckState.
@@ -414,8 +418,9 @@ Public Class Form1
         If str(0) = "False" Then
             Dim a As String = ""
             a += "检测到有新版本" & vbNewLine
-            a += "更新内容：" & str(1)
+            a += "更新内容：" & str(1) & vbNewLine
             MsgBox(a)
+            System.IO.File.AppendAllText("patch.txt", a)
             Process.Start("更新.exe")
             Me.Close()
             Exit Sub
@@ -425,6 +430,7 @@ Public Class Form1
             Exit Sub
         End If
         XML_duqu()
+        SkinLoad()
     End Sub
 
     Private Sub Form1_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
@@ -793,6 +799,76 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem2.Click
+        MenuStrip1.BackgroundImage = CB.My.Resources._4
+        Panel1.BackgroundImage = CB.My.Resources._4
+        SaveSkin("1")
+    End Sub
+
+    Private Sub ToolStripMenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem3.Click
+        'f95cbc45622848b2cefca3ca.jpg
+        MenuStrip1.BackgroundImage = CB.My.Resources.f95cbc45622848b2cefca3ca
+        Panel1.BackgroundImage = CB.My.Resources.f95cbc45622848b2cefca3ca
+        SaveSkin("2")
+    End Sub
+
+    Private Sub ToolStripMenuItem4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem4.Click
+        MenuStrip1.BackgroundImage = CB.My.Resources._4383834_203327048453_2
+        Panel1.BackgroundImage = CB.My.Resources._4383834_203327048453_2
+        SaveSkin("3")
+    End Sub
+
+    Private Sub ToolStripMenuItem5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem5.Click
+        MenuStrip1.BackgroundImage = CB.My.Resources._20130528182727
+        Panel1.BackgroundImage = CB.My.Resources._20130528182727
+        SaveSkin("4")
+    End Sub
+
+    Private Sub ToolStripMenuItem6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem6.Click
+        MenuStrip1.BackgroundImage = CB.My.Resources._1231
+        Panel1.BackgroundImage = CB.My.Resources._1231
+        SaveSkin("5")
+    End Sub
+
+    Function SaveSkin(ByVal a As String)
+        Dim skin As String = "skin.txt"
+        System.IO.File.WriteAllText(skin, a)
+        Return ""
+    End Function
 
 
+    Function SkinLoad()
+        If Not IO.File.Exists("skin.txt") Then
+            Return ""
+        End If
+        Dim Skin() As String = File.ReadAllLines("skin.txt")
+        If Skin.Length > 1 Then
+            If Not IO.File.Exists(Skin(0)) Then
+                Dim msg As String = "文件" & Skin(0) & "不存在"
+                Return ""
+            End If
+            MenuStrip1.BackgroundImage = Image.FromFile(Skin(0))
+            Panel1.BackgroundImage = Image.FromFile(Skin(0))
+            Return ""
+        End If
+        MenuStrip1.BackgroundImage = SkinList(Skin(0) - 1)
+        Panel1.BackgroundImage = SkinList(Skin(0) - 1)
+        Return ""
+    End Function
+
+    Private Sub 自定义ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles 自定义ToolStripMenuItem.Click
+        Dim Form2FH As DialogResult = Form11.ShowDialog()
+        If Form2FH = Windows.Forms.DialogResult.Cancel Then
+            Exit Sub
+        End If
+        Dim a As String = Form11.TextBox1.Text & vbNewLine
+        a += "自定义"
+        SaveSkin(a)
+        Try
+            MenuStrip1.BackgroundImage = Image.FromFile(Form11.TextBox1.Text)
+            Panel1.BackgroundImage = Image.FromFile(Form11.TextBox1.Text)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
 End Class

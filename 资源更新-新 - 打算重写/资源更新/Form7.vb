@@ -57,4 +57,29 @@ Public Class Form7
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         Updata()
     End Sub
+
+   
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Dim dataAdapter As New MySqlDataAdapter
+        Dim dst As New DataSet
+        Dim dt As New DataTable
+        Dim Form2FH As DialogResult = LOG_C.ShowDialog()
+        If Form2FH = Windows.Forms.DialogResult.Cancel Then
+            Exit Sub
+        End If
+        Dim ChaXun As String = LOG_C.TextBox1.Text
+        If ChaXun = "" Then
+            MsgBox("错误，输入信息不完整")
+            Exit Sub
+        End If
+        Dim sql As String = "select * from operational_records where Directory='" & ChaXun & "'"
+        'MsgBox(sql)
+        Dim cmd As MySqlCommand = New MySqlCommand(sql, mycon)
+        dataAdapter.SelectCommand = cmd
+        dataAdapter.Fill(dst, "info")
+        dt = dst.Tables("info")
+        mycon.Close()   '关闭数据库  
+        DataGridView1.AutoGenerateColumns = True '自动创建列  
+        DataGridView1.DataSource = dt
+    End Sub
 End Class

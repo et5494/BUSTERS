@@ -3,6 +3,7 @@ Public Class Form1
     Dim mv As String
     Dim AllFile() As String
     Dim AllNum As Integer = 0
+    Dim Time As Double = 1
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Dim FileNema As New FolderBrowserDialog()
         FileNema.ShowNewFolderButton = True
@@ -12,15 +13,25 @@ Public Class Form1
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        If TextBox2.Text = "" Then
+            Time = 1500
+        Else
+            Time = CInt(TextBox2.Text)
+            Time = Time * 1000
+        End If
         If IO.Directory.Exists(TextBox1.Text) = False Then
             MsgBox("错误，目标不存在")
             Exit Sub
         End If
         AllFile = Directory.GetFiles(TextBox1.Text, "*.*", SearchOption.AllDirectories)
+        Timer1.Interval = Time
         mv = TextBox1.Text
         Label3.Text = AllFile.Length
         Button2.Enabled = False
         Button3.Enabled = True
+        Button1.Enabled = False
+        TextBox1.Enabled = False
+        TextBox2.Enabled = False
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
@@ -61,9 +72,29 @@ Public Class Form1
             Rename(oldname, newname)
             AllNum += 1
             Label7.Text = AllNum
+            File.AppendAllText("log.txt", "old:" & oldname & "  " & "New:" & newname & vbNewLine)
+            'File.AppendAllText(path, contents)
+            'Path()
+            '要将指定的字符串追加到的文件。
+            'contents()
+            '要追加到文件中的字符串。
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
         Return True
     End Function
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If IO.File.Exists("config.txt") Then
+            Dim str() As String = IO.File.ReadAllLines("config.txt")
+            TextBox1.Text = str(0)
+        End If
+    End Sub
+
+    Private Sub Form1_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+        If TextBox1.Text <> "" Then
+            Dim str As String = TextBox1.Text
+            IO.File.WriteAllText("config.txt", str)
+        End If
+    End Sub
 End Class
